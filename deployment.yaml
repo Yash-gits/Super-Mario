@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mario-deployment
+spec:
+  replicas: 2  # We can adjust the number of replicas as we require.
+  selector:
+    matchLabels:
+      app: mario
+  template:
+    metadata:
+      labels:
+        app: mario
+    spec:
+      containers:
+      - name: mario-container
+        image: sevenajay/mario:latest #[Taken the Mario image from the public repositary]
+        ports:
+        - containerPort: 80
